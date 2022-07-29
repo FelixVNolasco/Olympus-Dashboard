@@ -5,6 +5,7 @@ import { Sidebar } from "../../components/Sidebar";
 import { Footer } from "../../components/Footer";
 // import { MenuItem } from "../../components/MenuItem";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -48,12 +49,11 @@ export const Products = () => {
               );
             })}
           </div>
-
-          <div className="flex items-center justify-center mt-4 mb-4">
+          <Link className="flex items-center justify-center mt-4 mb-4" to={"/"}>
             <span className="pl-2 pr-2 pt-3 pb-2 bg-purple-500/70 hover:bg-purple-500/60  font-semibold text-base rounded-md text-center cursor-pointer">
               Add a new product
             </span>
-          </div>
+          </Link>
         </div>
       </main>
       <Footer />

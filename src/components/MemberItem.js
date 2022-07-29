@@ -1,20 +1,19 @@
-
 import React from "react";
 // import Image from "next/image";
 
-export const MemberItem = ({member}) => {
+export const MemberItem = ({ member }) => {
   return (
     <>
       <div className="flex flex-row items-center justify-between mt-4">
         <div className="w-12 h-12 mr-2">
           <div className="h-full w-full">
-            {/* <Image
-              className="rounded-full"
+            <img
+              className="rounded-md"
               src={member.photoUrl}
-              alt="Member Photo"
-              width={32}
+              alt="Memberphoto"
               height={32}
-            /> */}
+              width={32}
+            />
           </div>
         </div>
         <div className="flex flex-col">

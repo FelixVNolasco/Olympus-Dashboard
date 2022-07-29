@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export const DataCards = () => {
   return (
     <>
@@ -12,12 +11,13 @@ export const DataCards = () => {
               <span className="text-lg font-bold">$2,415</span>
               <div className="flex flex-row">
                 <span className="mr-2">-11.4</span>
-                {/* <Image
-                  src="/down-arrow.svg"
-                  alt="Home Logo"
+
+                <img
+                  src="https://www.svgrepo.com/show/199621/down-arrow.svg"
                   width={24}
                   height={24}
-                /> */}
+                  alt=""
+                />
               </div>
             </div>
             <span className="font-light mt-2">Compared to last month</span>
@@ -31,12 +31,12 @@ export const DataCards = () => {
               <span className="text-lg font-bold">$2,415</span>
               <div className="flex flex-row">
                 <span className="mr-2">-1.4</span>
-                {/* <Image
-                  src="/down-arrow.svg"
-                  alt="Home Logo"
+                <img
+                  src="https://www.svgrepo.com/show/199621/down-arrow.svg"
                   width={24}
                   height={24}
-                /> */}
+                  alt=""
+                />
               </div>
             </div>
             <span className="font-light mt-2">Compared to last month</span>
@@ -50,12 +50,12 @@ export const DataCards = () => {
               <span className="text-lg font-bold">$2,033</span>
               <div className="flex flex-row">
                 <span className="mr-2">+1.7</span>
-                {/* <Image
-                  src="/up-arrow.svg"
-                  alt="Home Logo"
+                <img
+                  src="https://www.svgrepo.com/show/199531/up-arrow-ui.svg"
                   width={24}
                   height={24}
-                /> */}
+                  alt=""
+                />
               </div>
             </div>
             <span className="font-light mt-2">Compared to last month</span>
