@@ -41,8 +41,7 @@ export const Navbar = () => {
           <div className="h-12 w-12 mr-2 rounded-md border-4 border-green-800 cursor-pointer">
             <img
               src="https://res.cloudinary.com/dhyxqmnua/image/upload/v1640292954/csuzx89sd0hnrgubogzh.png"
-              alt=""
-              srcset=""
+              alt=""              
             />
           </div>
         </div>
