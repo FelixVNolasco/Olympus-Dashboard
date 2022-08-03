@@ -1,10 +1,14 @@
-import React from "react";
-// import Image from "next/image";
+import React, { useState } from "react";
+import { ProfileMenu } from "./Navbar/ProfileMenu";
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
-  const handleMenu = () => {
-    console.log("hola");
-  };
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
+  const { urlImage } = currentUser;
+
+  const handleMenu = () => {};
+
   return (
     <div className="h-16 bg-teal-600 text-white w-full">
       <div className="flex flex-row h-16 justify-between items-center">
@@ -38,11 +42,20 @@ export const Navbar = () => {
             />
           </div> */}
 
-          <div className="h-12 w-12 mr-2 rounded-md border-4 border-green-800 cursor-pointer">
-            <img
-              src="https://res.cloudinary.com/dhyxqmnua/image/upload/v1640292954/csuzx89sd0hnrgubogzh.png"
-              alt=""              
-            />
+          <div
+            onClick={() => {
+              setShowProfileMenu(!showProfileMenu);
+            }}
+            className="h-12 w-12 mr-2 rounded-md border-4 border-green-800 cursor-pointer"
+          >
+            {urlImage !== "" ? (
+              <img src={urlImage} alt="" />
+            ) : (
+              <img
+                src="https://www.svgrepo.com/show/230988/profile-user.svg"
+                alt=""
+              />
+            )}
           </div>
         </div>
 
@@ -60,6 +73,7 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
+      {showProfileMenu && <ProfileMenu />}
     </div>
   );
 };

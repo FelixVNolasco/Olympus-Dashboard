@@ -3,13 +3,15 @@ import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 
-export default function newproduct() {
+export const NewProduct = () => {
   const formData = [
     { title: "Title", placeholder: "Tenis Adidas Air-Flow" },
     { title: "Description", placeholder: "description..." },
     { title: "Price", placeholder: "100" },
     { title: "Categories", placeholder: "women, man" },
+    { title: "Sizes", placeholder: "26,27.6,28" },
   ];
+
   return (
     <>
       <Navbar />
@@ -52,4 +54,4 @@ export default function newproduct() {
       <Footer />
     </>
   );
-}
+};

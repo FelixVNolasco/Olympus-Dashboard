@@ -5,7 +5,7 @@ import { Navbar } from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 import { UserItem } from "../../components/UserItem";
 
-export default function Users() {
+export const Users = () => {
   const titles = [
     { title: "ID", img: "https://www.svgrepo.com/show/256763/id-id.svg" },
     { title: "Username", img: "https://www.svgrepo.com/show/8135/user.svg" },
@@ -42,4 +42,4 @@ export default function Users() {
       <Footer />
     </>
   );
-}
+};

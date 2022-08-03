@@ -3,7 +3,7 @@ import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { Sidebar } from "../components/Sidebar";
 
-export default function Home() {
+export const Home = () => {
   return (
     <>
       <Navbar />
@@ -14,4 +14,4 @@ export default function Home() {
       <Footer />
     </>
   );
-}
+};

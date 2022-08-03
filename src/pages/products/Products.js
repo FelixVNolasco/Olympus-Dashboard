@@ -21,8 +21,6 @@ export const Products = () => {
     getProducts();
   }, []);
 
-  console.log(products);
-
   return (
     <>
       <Navbar className="h-1/5" />
@@ -50,9 +48,12 @@ export const Products = () => {
             })}
           </div>
           <Link className="flex items-center justify-center mt-4 mb-4" to={"/"}>
-            <span className="pl-2 pr-2 pt-3 pb-2 bg-purple-500/70 hover:bg-purple-500/60  font-semibold text-base rounded-md text-center cursor-pointer">
+            <Link
+              to={"/product/new"}
+              className="p-2 bg-purple-500/70 hover:bg-purple-500/60  font-semibold text-base rounded-md text-center cursor-pointer"
+            >
               Add a new product
-            </span>
+            </Link>
           </Link>
         </div>
       </main>
