@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const ProductItem = ({ id, img, title, inStock, price }) => {
   //FIXME:
@@ -22,37 +23,27 @@ export const ProductItem = ({ id, img, title, inStock, price }) => {
   }, []);
 
   return (
-    <div className="flex flex-row items-center justify-between p-4 h-20">
-      <span className="font-semibold text-lg">{`${id.substring(
-        0,
-        15
-      )}...`}</span>
+    <div className="grid grid-cols-6 items-center justify-between h-20 text-lg font-semibold">
+      <span>{`${id.substring(0, 15)}...`}</span>
 
       <img src={img} alt="" width={64} height={64} />
 
-      <span className="font-semibold text-lg ml-2">{`${title.substring(
-        0,
-        30
-      )}...`}</span>
+      <span>{`${title.substring(0, 20)}...`}</span>
 
-      {inStock ? (
-        <span className="font-semibold text-lg">Yes</span>
-      ) : (
-        <span className="font-semibold text-lg">No</span>
-      )}
+      <div className="flex flex-row items-center mr-20 font-semibold">
+        {inStock ? (
+          <span className="mr-2">Yes</span>
+        ) : (
+          <span className="mr-2">No</span>
+        )}
+        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+      </div>
 
-      <span className="font-semibold text-lg">{`$${price}`}</span>
+      <span>{`$${price}`}</span>
       <div className="flex flex-row items-center h-full">
-        <span className="pt-1 pb-1 pl-3 pr-3 bg-green-400 hover:bg-green-400/80 rounded-lg mr-2 cursor-pointer">
+        <Link to={`/products/${id}`} className="font-normal pt-1 pb-1 pl-3 pr-3 bg-green-400 hover:bg-green-400/80 rounded-lg mr-2 cursor-pointer">
           Edit
-        </span>
-        <img
-          src="https://www.svgrepo.com/show/192510/trash.svg"
-          alt=""
-          width={32}
-          height={32}
-          className="transition ease-in-out duration-300 hover:-translate-y-1 rounded-md cursor-pointer"
-        />
+        </Link>
       </div>
     </div>
   );

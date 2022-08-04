@@ -7,6 +7,8 @@ import { NewProduct } from "./pages/products/NewProduct";
 import { Users } from "./pages/users/Users";
 import { Profile } from "./pages/Profile/Profile";
 import { useSelector } from "react-redux";
+import { SingleUser } from "./pages/users/SingleUser";
+import { SingleProduct } from "./pages/products/SingleProduct";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -24,8 +26,10 @@ function App() {
         )}
 
         <Route path="/users" element={<Users />}></Route>
+        <Route path="/users/:id" element={<SingleUser />}></Route>
         <Route path="/product/new" element={<NewProduct />}></Route>
         <Route path="/products" element={<Products />}></Route>
+        <Route path="/products/:id" element={<SingleProduct />}></Route>
         <Route path="/auth/login" element={<Login />}></Route>
         <Route path="/auth/signup" element={<Signup />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
