@@ -1,29 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export const ProductItem = ({ id, img, title, inStock, price }) => {
-  //FIXME:
-  // CHANGE THE BEHEAVIOR OF USE EFFECT
-
-  useEffect(() => {
-    // const addNewProduct = async () => {
-    //   try {
-    //     const docRef = await addDoc(collection(db, "products"), {
-    //       name: "Tenis Nike",
-    //       img: "",
-    //       stock: true,
-    //       price: 120,
-    //     });
-    //     console.log("Document written with ID: ", docRef);
-    //   } catch (e) {
-    //     console.error("Error adding document: ", e);
-    //   }
-    // };
-    // addNewProduct();
-  }, []);
 
   return (
-    <div className="grid grid-cols-6 items-center justify-between h-20 text-lg font-semibold">
+    <div className="grid grid-cols-6 justify-items-center items-center justify-between h-20 text-lg font-semibold">
       <span>{`${id.substring(0, 15)}...`}</span>
 
       <img src={img} alt="" width={64} height={64} />
