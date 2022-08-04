@@ -1,54 +1,31 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { MemberItem } from "./MemberItem";
 
 export const NewMembers = () => {
-  const members = [
-    {
-      name: "Felix Vega",
-      job: "FrontEnd Developer",
-      photoUrl:
-        "https://res.cloudinary.com/dhyxqmnua/image/upload/v1640292954/csuzx89sd0hnrgubogzh.png",
-    },
-    {
-      name: "Juan Carlos",
-      job: "FrontEnd Developer",
-      photoUrl:
-        "https://res.cloudinary.com/dhyxqmnua/image/upload/v1640292954/csuzx89sd0hnrgubogzh.png",
-    },
-    {
-      name: "Pedro Ramirez",
-      job: "FrontEnd Developer",
-      photoUrl:
-        "https://res.cloudinary.com/dhyxqmnua/image/upload/v1640292954/csuzx89sd0hnrgubogzh.png",
-    },
-    {
-      name: "Pablo Sanchez",
-      job: "FrontEnd Developer",
-      photoUrl:
-        "https://res.cloudinary.com/dhyxqmnua/image/upload/v1640292954/csuzx89sd0hnrgubogzh.png",
-    },
-    {
-      name: "Maria Cortazar",
-      job: "FrontEnd Developer",
-      photoUrl:
-        "https://res.cloudinary.com/dhyxqmnua/image/upload/v1640292954/csuzx89sd0hnrgubogzh.png",
-    },
-  ];
+
+  const [latestUsers, setLatestUsers] = useState([]);
+
+  const { currentUser } = useSelector((state) => state.user);
+  const { accessToken } = currentUser;  
+
 
   useEffect(() => {
-    const getNewMembers = async () => {
-      // try {
-      //   // const usersCollection = collection(db, "users");
-      //   // const usersSnapshot = await getDocs(usersCollection);
-      //   // const usersList = usersSnapshot.docs.map((doc) => doc.data());
-      //   // console.log(usersList);
-      //   // return;
-      // } catch (error) {
-      //   console.log(error);
-      // }
+    const config = {
+      headers: {
+        token: `Bearer ${accessToken}`,
+      },
     };
-    getNewMembers();
-  }, []);
+    const getLatestUsers = () => {
+      axios
+        .get("https://olympus-backend.vercel.app/api/users/", config)
+        .then((resp) => {
+          setLatestUsers(resp.data);
+        });
+    };
+    getLatestUsers();
+  }, [accessToken]);
 
   return (
     <>
@@ -56,8 +33,8 @@ export const NewMembers = () => {
         <div className="flex flex-col">
           <span className="text-xl font-semibold mb-4">New Members</span>
 
-          {members.map((member) => {
-            return <MemberItem key={member.name} member={member} />;
+          {latestUsers.map((member) => {
+            return <MemberItem key={member._id} member={member} />;
           })}
         </div>
       </div>
