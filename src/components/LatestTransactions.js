@@ -42,7 +42,7 @@ export const LatestTransactions = () => {
           <div className="flex flex-col">
             <span className="text-xl font-semibold">Latest Transactions</span>
             <div className="flex flex-col mt-2">
-              <div className="flex flex-row justify-between">
+              <div className="grid grid-cols-4 justify-items-stretch">
                 <span className="font-semibold">Customer</span>
                 <span className="font-semibold">Date</span>
                 <span className="font-semibold mr-6">Amount</span>

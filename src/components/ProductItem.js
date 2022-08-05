@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const ProductItem = ({ id, img, title, inStock, price }) => {
 
   return (
-    <div className="grid grid-cols-6 justify-items-center items-center justify-between h-20 text-lg font-semibold">
+    <div className="grid grid-cols-6 justify-items-stretch items-center justify-between h-20 text-lg font-semibold">
       <span>{`${id.substring(0, 15)}...`}</span>
 
       <img src={img} alt="" width={64} height={64} />

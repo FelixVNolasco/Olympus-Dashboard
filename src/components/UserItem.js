@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const UserItem = ({ _id, username, email, isAdmin, createdAt }) => {
   return (
-    <div className="grid grid-cols-6 justify-between p-4 items-center h-20 text-lg font-semibold">
+    <div className="grid grid-cols-6 justify-items-stretch justify-between p-4 items-center h-20 text-lg font-semibold">
       <span>{`${_id.substring(0, 15)}...`}</span>
       <span>{username}</span>
       <span>{email}</span>

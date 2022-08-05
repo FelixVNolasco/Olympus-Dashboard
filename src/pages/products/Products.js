@@ -41,7 +41,7 @@ export const Products = () => {
       <main className="flex flex-row justify-center">
         <Sidebar />
         <div className="flex flex-col mt-2 mr-6 w-5/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
-          <div className="grid grid-cols-6 justify-items-center	p-4 mr-4">
+          <div className="grid grid-cols-6 justify-items-stretch	p-4 mr-4">
             {titles.map((item) => {
               return <MenuItem key={item.title} item={item} />;
             })}
