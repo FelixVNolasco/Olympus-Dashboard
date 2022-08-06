@@ -1,39 +1,40 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { doneFetchingData, failFetchingData, startFetchingData } from "../redux/userReducer";
+import { latestUsers } from "../template/Dashboard";
 import { TransactionItem } from "./TransactionItem";
 
 export const LatestTransactions = () => {
-  const users = [
-    {
-      name: "Felix Vega",
-      date: "24/06/2000",
-      amount: "1984",
-      isApproved: true,
-    },
-    {
-      name: "Felix Vega",
-      date: "23/06/2000",
-      amount: "1984",
-      isApproved: false,
-    },
-    {
-      name: "Felix Vega",
-      date: "22/06/2000",
-      amount: "1984",
-      isApproved: true,
-    },
-    {
-      name: "Felix Vega",
-      date: "21/06/2000",
-      amount: "1984",
-      isApproved: false,
-    },
-    {
-      name: "Felix Vega",
-      date: "20/06/2000",
-      amount: "1984",
-      isApproved: true,
-    },
-  ];
+
+  // const dispatch = useDispatch();
+  // const { currentUser } = useSelector((state) => state.user);
+  // const { isFetching } = useSelector((state) => state.user);
+  // const { accessToken } = currentUser;
+  // const [latestTransactions, setLatestTransactions] = useState([]);
+
+
+  // useEffect(() => {
+  //   const config = {
+  //     headers: {
+  //       token: `Bearer ${accessToken}`,
+  //     },
+  //   };
+  //   const getLatestTransactions = () => {
+  //     dispatch(startFetchingData());
+  //     axios
+  //       .get("https://olympus-backend.vercel.app/api/users/", config)
+  //       .then((resp) => {
+  //         setLatestTransactions(resp.data);
+  //         dispatch(doneFetchingData());
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //         dispatch(failFetchingData());
+  //       });
+  //   };
+  //   getLatestTransactions();
+  // }, [accessToken, dispatch]);
 
   return (
     <>
@@ -49,7 +50,7 @@ export const LatestTransactions = () => {
                 <span className="font-semibold">Status</span>
               </div>
               <div className="flex flex-col mt-2">
-                {users.map((transaction) => {
+                {latestUsers.map((transaction) => {
                   return (
                     <TransactionItem key={transaction.date} transaction={transaction}/>
                   );
