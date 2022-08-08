@@ -20,67 +20,76 @@ import { ChartData } from "../template/Dashboard";
 
 export const Chart = () => {
 
-  // const dispatch = useDispatch();
-  // const { currentUser } = useSelector((state) => state.user);
-  // const { isFetching } = useSelector((state) => state.user);
-  // const { accessToken } = currentUser;
-  // const [latestTransactions, setLatestTransactions] = useState([]);
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
+  const { isFetching } = useSelector((state) => state.user);
+  const { accessToken } = currentUser;
+  const [latestTransactions, setLatestTransactions] = useState([]);
 
-  // useEffect(() => {
-  //   const config = {
-  //     headers: {
-  //       token: `Bearer ${accessToken}`,
-  //     },
-  //   };
-  //   const getLatestTransactions = () => {
-  //     dispatch(startFetchingData());
-  //     axios
-  //       .get("https://olympus-backend.vercel.app/api/users/", config)
-  //       .then((resp) => {
-  //         setLatestTransactions(resp.data);
-  //         dispatch(doneFetchingData());
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //         dispatch(failFetchingData());
-  //       });
-  //   };
-  //   getLatestTransactions();
-  // }, [accessToken, dispatch]);
+  useEffect(() => {
+    const config = {
+      headers: {
+        token: `Bearer ${accessToken}`,
+      },
+    };
+    const getLatestTransactions = () => {
+      dispatch(startFetchingData());
+      axios
+        .get("https://olympus-backend.vercel.app/api/users/stats", config)
+        .then((resp) => {
+          setLatestTransactions(resp.data);
+          dispatch(doneFetchingData());
+        })
+        .catch((error) => {
+          console.log(error);
+          dispatch(failFetchingData());
+        });
+    };
+    getLatestTransactions();
+  }, [accessToken, dispatch]);
+
+  console.log(latestTransactions);
 
   return (
     <>
       <div className="flex flex-col border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 mt-2 md:mr-0 lg:mr-0 xl:mr-6">
-        <span className="p-2 text-xl font-semibold">
-          Active Users Analytics
-        </span>
-        <div className="h-72 w-full">
+        {
+          isFetching ?
+            <span>Cargando...</span>
+            :
+            <>
+              <span className="p-2 text-xl font-semibold">
+                Active Users Analytics
+              </span>
+              <div className="h-72 w-full">
 
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={ChartData}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="pv"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={ChartData}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Line
+                      type="monotone"
+                      dataKey="pv"
+                      stroke="#8884d8"
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </>
+        }
       </div>
     </>
   );

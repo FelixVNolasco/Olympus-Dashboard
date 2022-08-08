@@ -18,13 +18,13 @@ export const Profile = () => {
         <div className="flex flex-col mt-2 mr-6 w-5/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
           <div className="container mx-auto my-5 p-5">
             <div className="md:flex no-wrap md:-mx-2 ">
-              <div className="w-full md:w-3/12 md:mx-2 p-8 transition ease-in-out duration-300 hover:bg-slate-200 rounded-md cursor-pointer">              
+              <div className="w-full md:w-3/12 md:mx-2 p-8 transition ease-in-out duration-300 hover:bg-slate-200 rounded-md cursor-pointer">
                 {urlImage !== "" ? (
                   <img src={urlImage} alt="" />
                 ) : (
                   <img
                     src="https://www.svgrepo.com/show/230988/profile-user.svg"
-                  alt=""
+                    alt=""
                   />
                 )}
               </div>
