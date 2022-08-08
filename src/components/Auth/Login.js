@@ -8,11 +8,11 @@ import axios from "axios";
 
 export const Login = () => {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+
   const [formValues, handleInputChange] = useForm({
-    username: "jhonDoe",
-    password: "helloworld",
+    username: "",
+    password: "",
   });
 
   const { username, password } = formValues;
@@ -40,14 +40,14 @@ export const Login = () => {
         navigate("/");
       }
     } catch (error) {
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: "No ha sido posible iniciar Sesión",
-    //     didOpen: () => {
-    //       navigate("/auth/login");
-    //     },
-    //   });
+      //   Swal.fire({
+      //     icon: "error",
+      //     title: "Oops...",
+      //     text: "No ha sido posible iniciar Sesión",
+      //     didOpen: () => {
+      //       navigate("/auth/login");
+      //     },
+      //   });
     }
   };
 
