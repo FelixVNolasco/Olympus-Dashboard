@@ -11,8 +11,8 @@ export const Login = () => {
 
   const navigate = useNavigate();
   const [formValues, handleInputChange] = useForm({
-    username: "",
-    password: "",
+    username: "jhonDoe",
+    password: "helloworld",
   });
 
   const { username, password } = formValues;
