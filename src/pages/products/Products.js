@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "../../components/Navbar";
-import { ProductItem } from "../../components/ProductItem";
+import { ProductCard } from "../../components/ProductCard";
 import { Sidebar } from "../../components/Sidebar";
 import { Footer } from "../../components/Footer";
 import { MenuItem } from "../../components/MenuItem";
@@ -41,21 +41,14 @@ export const Products = () => {
       <main className="flex flex-row justify-center">
         <Sidebar />
         <div className="flex flex-col mt-2 mr-6 w-5/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
-          <div className="grid grid-cols-6 justify-items-stretch	p-4 mr-4">
-            {titles.map((item) => {
-              return <MenuItem key={item.title} item={item} />;
-            })}
-          </div>
-
-          <div className="flex flex-col justify-between p-4 mr-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-between">
             {products.map((item) => {
               return (
-                <ProductItem
+                <ProductCard
                   key={item._id}
                   id={item._id}
                   img={item.img}
                   title={item.title}
-                  inStock={item.inStock}
                   price={item.price}
                 />
               );
