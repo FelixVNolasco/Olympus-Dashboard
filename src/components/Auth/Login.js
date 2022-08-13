@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import validator from "validator";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../../redux/userReducer";
 import { useForm } from "../../hooks/useForm";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 
 export const Login = () => {
@@ -16,6 +17,11 @@ export const Login = () => {
   });
 
   const { username, password } = formValues;
+
+  const [showPassword, setshowPassword] = useState(false);
+  const handleShowPassword = () => {
+    setshowPassword(!showPassword);
+  }
 
   // const [errors, setErrors] = useState("");
 
@@ -68,13 +74,22 @@ export const Login = () => {
         />
 
         <span className="text-md">Password</span>
-        <input
-          className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500  w-full mb-4"
-          type="password"
-          name="password"
-          onChange={handleInputChange}
-          autoComplete="false"
-        />
+        <div className="flex justify-between items-center mb-4">
+          <input
+            className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500  w-full"
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            onChange={handleInputChange}
+            autoComplete="false"
+          />
+          {
+            showPassword ?
+            <FaEye className="h-6 w-6 ml-2 cursor-pointer" onClick={handleShowPassword}/>
+            :
+            <FaEyeSlash className="h-6 w-6 ml-2 cursor-pointer" onClick={handleShowPassword}/>
+          }
+          
+        </div>
 
         <div className="flex justify-end">
           <div
