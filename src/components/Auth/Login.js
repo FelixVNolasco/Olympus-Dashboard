@@ -84,11 +84,11 @@ export const Login = () => {
           />
           {
             showPassword ?
-            <FaEye className="h-6 w-6 ml-2 cursor-pointer" onClick={handleShowPassword}/>
-            :
-            <FaEyeSlash className="h-6 w-6 ml-2 cursor-pointer" onClick={handleShowPassword}/>
+              <FaEye className="h-6 w-6 ml-2 cursor-pointer" onClick={handleShowPassword} />
+              :
+              <FaEyeSlash className="h-6 w-6 ml-2 cursor-pointer" onClick={handleShowPassword} />
           }
-          
+
         </div>
 
         <div className="flex justify-end">
