@@ -50,6 +50,7 @@ export const Products = () => {
                   img={item.img}
                   title={item.title}
                   price={item.price}
+                  inStock={item.inStock}
                 />
               );
             })}
