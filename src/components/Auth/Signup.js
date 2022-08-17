@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import validator from "validator";
 import { Link, useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -20,7 +20,7 @@ export const Signup = () => {
 
   console.log(formValues);
 
-  // const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState("");
 
   const isFormValid = () => {
     if (
@@ -28,11 +28,12 @@ export const Signup = () => {
       validator.isEmpty(email) ||
       validator.isEmpty(password)
     ) {
-      // setErrors("Todos los campos son obligatorios");
+      setErrors("All fields are required");
       return false;
+    } else {
+      setErrors("");
+      return true;
     }
-    // setErrors("");
-    return true;
   };
 
   const signup = () => {
@@ -51,7 +52,16 @@ export const Signup = () => {
         trySignup();
       }
     } catch (error) {
-      // setErrors("No ha sido posible realizar el registro");
+      setErrors("No ha sido posible realizar el registro");
+      console.log(errors);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: 'Something went wrong',
+        didOpen: () => {
+          navigate("/auth/signup");
+        },
+      });
     }
   };
 

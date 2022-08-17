@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { loginSuccess } from "../../redux/userReducer";
 import { useForm } from "../../hooks/useForm";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from 'sweetalert2'
 import axios from "axios";
 
 export const Login = () => {
@@ -23,15 +24,17 @@ export const Login = () => {
     setshowPassword(!showPassword);
   }
 
-  // const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState("");
 
   const isFormValid = () => {
     if (validator.isEmpty(username) || validator.isEmpty(password)) {
-      // setErrors("Todos los campos son obligatorios");
+      setErrors("All fields are required");
       return false;
     }
-    // setErrors("");
-    return true;
+    else {
+      setErrors("");
+      return true;
+    }
   };
 
   const login = async () => {
@@ -46,16 +49,19 @@ export const Login = () => {
         navigate("/");
       }
     } catch (error) {
-      //   Swal.fire({
-      //     icon: "error",
-      //     title: "Oops...",
-      //     text: "No ha sido posible iniciar Sesión",
-      //     didOpen: () => {
-      //       navigate("/auth/login");
-      //     },
-      //   });
+        setErrors("Wrong user or password");
+        console.log(errors);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: 'Something went wrong',
+          didOpen: () => {
+            navigate("/auth/login");
+          },
+        });
     }
   };
+
 
   return (
     <div className="flex mt-6 justify-center h-screen">
