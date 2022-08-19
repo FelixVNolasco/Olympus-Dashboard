@@ -33,15 +33,11 @@ export const LoginForm = () => {
             if (!values.password) {
               errors.password = "Password is required";
             }
-            // else if (
-            //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            // ) {
-            //   errors.email = "Invalid email address";
-            // }
             return errors;
           }}
           onSubmit={async (values, { setSubmitting }) => {
             try {
+              setSubmitting(true);
               const response = await axios.post(
                 "https://olympus-backend.vercel.app/api/auth/login",
                 values
@@ -49,7 +45,9 @@ export const LoginForm = () => {
               const userData = response.data;
               dispatch(loginSuccess(userData));
               navigate("/");
+              setSubmitting(false);
             } catch (error) {
+              setSubmitting(false);
               Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -67,7 +65,7 @@ export const LoginForm = () => {
                 Username
               </label>
               <Field
-                className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500 w-full mb-4"
+                className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500 w-full"
                 type="username"
                 name="username"
               />
@@ -76,34 +74,36 @@ export const LoginForm = () => {
                 name="username"
                 component="div"
               />
-              <label className="text-md" htmlFor="password">
-                Password
-              </label>
-              <div className="flex justify-between items-center mb-4">
-                <Field
-                  className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500  w-full"
-                  type={showPassword ? "text" : "password"}
+              <div className="mt-4">
+                <label className="text-md" htmlFor="password">
+                  Password
+                </label>
+                <div className="flex justify-between items-center">
+                  <Field
+                    className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500  w-full"
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                  />
+                  {showPassword ? (
+                    <FaEye
+                      className="h-6 w-6 ml-2 cursor-pointer"
+                      onClick={handleShowPassword}
+                    />
+                  ) : (
+                    <FaEyeSlash
+                      className="h-6 w-6 ml-2 cursor-pointer"
+                      onClick={handleShowPassword}
+                    />
+                  )}
+                </div>
+                <ErrorMessage
+                  className="text-red-500"
                   name="password"
+                  component="div"
                 />
-                {showPassword ? (
-                  <FaEye
-                    className="h-6 w-6 ml-2 cursor-pointer"
-                    onClick={handleShowPassword}
-                  />
-                ) : (
-                  <FaEyeSlash
-                    className="h-6 w-6 ml-2 cursor-pointer"
-                    onClick={handleShowPassword}
-                  />
-                )}
               </div>
-              <ErrorMessage
-                className="text-red-500"
-                name="password"
-                component="div"
-              />
 
-              <div className="flex justify-end">
+              <div className="flex justify-end mt-4">
                 <button
                   className="p-3 bg-green-200 transition ease-in-out duration-300 hover:bg-green-300 rounded-md text-sm font-semibold cursor-pointer"
                   type="submit"

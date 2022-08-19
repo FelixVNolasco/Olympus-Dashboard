@@ -37,16 +37,13 @@ export const SignupForm = () => {
           }}
           onSubmit={async (values, { setSubmitting }) => {
             try {
-              const trySignup = async () => {
-                const response = await axios.post(
-                  "https://olympus-backend.vercel.app/api/auth/signup",
-                  values
-                );
-                navigate("/");
-                const newUserData = response.data;
-                dispatch(loginSuccess(newUserData));
-              };
-              trySignup();
+              const response = await axios.post(
+                "https://olympus-backend.vercel.app/api/auth/signup",
+                values
+              );
+              const newUserData = response.data;
+              dispatch(loginSuccess(newUserData));
+              navigate("/");
             } catch (error) {
               Swal.fire({
                 icon: "error",
@@ -65,7 +62,7 @@ export const SignupForm = () => {
                 Username
               </label>
               <Field
-                className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500 w-full mb-4"
+                className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500 w-full"
                 type="username"
                 name="username"
               />
@@ -74,33 +71,39 @@ export const SignupForm = () => {
                 name="username"
                 component="div"
               />
-              <label className="text-md" htmlFor="email">
-                Email
-              </label>
-              <Field
-                className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500 w-full mb-4"
-                type="email"
-                name="email"
-              />
-              <ErrorMessage
-                className="text-red-500"
-                name="email"
-                component="div"
-              />
-              <label className="text-md" htmlFor="password">
-                Password
-              </label>
-              <Field
-                className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500  w-full"
-                type="password"
-                name="password"
-              />
+              <div className="mt-4">
+                <label className="text-md" htmlFor="email">
+                  Email
+                </label>
+                <Field
+                  className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500 w-full"
+                  type="email"
+                  name="email"
+                />
+                <ErrorMessage
+                  className="text-red-500"
+                  name="email"
+                  component="div"
+                />
+              </div>
 
-              <ErrorMessage
-                className="text-red-500"
-                name="password"
-                component="div"
-              />
+              <div className="mt-4">
+                <label className="text-md" htmlFor="password">
+                  Password
+                </label>
+                <Field
+                  className="rounded-md p-2 border-2 border-slate-400 transition ease-in-out duration-300 focus:outline-none focus:border-2 focus:border-slate-500  w-full"
+                  type="password"
+                  name="password"
+                />
+
+                <ErrorMessage
+                  className="text-red-500"
+                  name="password"
+                  component="div"
+                />
+              </div>
+
               <div className="flex justify-end mt-2">
                 <button
                   className="p-3 bg-green-200 transition ease-in-out duration-300 hover:bg-green-300 rounded-md text-sm font-semibold cursor-pointer"
