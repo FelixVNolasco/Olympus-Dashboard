@@ -14,7 +14,7 @@ export const SignupForm = () => {
     <div className="flex mt-6 justify-center h-screen">
       <div className="flex p-4 flex-col border-2 self-center w-5/6 sm:w-2/3 md:w-2/3 lg:w-3/5 xl:w-2/5 rounded-md">
         <h1 className="text-center mt-2 mb-6 sm:mb-4 text-2xl font-semibold">
-          Sigunp
+          Signup
         </h1>
         <Formik
           initialValues={{ username: "", email: "", password: "" }}

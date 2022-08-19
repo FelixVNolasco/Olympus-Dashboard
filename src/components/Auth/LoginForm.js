@@ -86,12 +86,12 @@ export const LoginForm = () => {
                   />
                   {showPassword ? (
                     <FaEye
-                      className="h-6 w-6 ml-2 cursor-pointer"
+                      className="h-6 w-6 ml-2 cursor-pointer text-slate-600"
                       onClick={handleShowPassword}
                     />
                   ) : (
                     <FaEyeSlash
-                      className="h-6 w-6 ml-2 cursor-pointer"
+                      className="h-6 w-6 ml-2 cursor-pointer text-slate-600"
                       onClick={handleShowPassword}
                     />
                   )}
