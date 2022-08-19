@@ -60,17 +60,15 @@ export const Navbar = () => {
         </div>
 
         <div
-          className="flex md:flex lg:flex xl:hidden items-center"
+          className="flex md:flex lg:flex xl:hidden items-center mr-4 cursor-pointer"
           onClick={handleMenu}
         >
-          <div className="mr-2 ml-6 mt-1 ">
             <img
               src="https://www.svgrepo.com/show/36538/menu.svg"
               width={24}
               height={24}
-              alt=""
-            />
-          </div>
+              alt=""              
+            />          
         </div>
       </div>
       {showProfileMenu && <ProfileMenu />}

@@ -10,6 +10,15 @@ export const Profile = () => {
   const { username, email, isAdmin, createdAt, updatedAt, urlImage } =
     currentUser;
 
+    const actualDate = new Date();
+
+    const createdAtDate = new Date(createdAt);
+    const differenceCreated = Math.abs(actualDate - createdAtDate);
+    const daysCreated = differenceCreated / (1000 * 3600 * 24);
+    
+    const updatedAtDate = new Date(updatedAt);
+    const differenceUpdated = Math.abs(actualDate - updatedAtDate);
+    const daysUpdated = differenceUpdated / (1000 * 3600 * 24);
   return (
     <>
       <Navbar />
@@ -59,15 +68,15 @@ export const Profile = () => {
                       </div>
                       <div className="grid grid-cols-2">
                         <div className="px-4 py-2 font-semibold">
-                          Created at
+                          Created
                         </div>
-                        <div className="px-4 py-2">{createdAt}</div>
+                        <div className="px-4 py-2">{`${daysCreated.toFixed(0)} days ago.`}</div>
                       </div>
                       <div className="grid grid-cols-2">
                         <div className="px-4 py-2 font-semibold">
-                          Updated at
+                          Updated
                         </div>
-                        <div className="px-4 py-2">{updatedAt}</div>
+                        <div className="px-4 py-2">{`${daysUpdated.toFixed(0)} days ago.`}</div>
                       </div>
                     </div>
                   </div>
