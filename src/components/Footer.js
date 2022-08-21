@@ -1,10 +1,9 @@
 import React from "react";
-// import Image from "next/image";
 
 export const Footer = () => {
   return (
     <>
-      <footer className="relative top-10 md:relative md:top-10 lg:top-10 xl:top-0 w-full h-26 bg-green-600/60 mt-2 justify-center">
+      <footer className="w-full h-26 bg-green-600/60 mt-2 justify-center">
         <div className="flex flex-col items-center">
           <span className="mt-2 text-lg font-semibold bg-yellow-500/90 p-2 rounded-lg">
             Felix Vega - Software Developer

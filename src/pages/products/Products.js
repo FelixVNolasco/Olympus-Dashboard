@@ -3,7 +3,6 @@ import { Navbar } from "../../components/Navbar";
 import { ProductCard } from "../../components/ProductCard";
 import { Sidebar } from "../../components/Sidebar";
 import { Footer } from "../../components/Footer";
-import { MenuItem } from "../../components/MenuItem";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -21,19 +20,6 @@ export const Products = () => {
     getProducts();
   }, []);
 
-  const titles = [
-    { title: "ID", img: "https://www.svgrepo.com/show/256763/id-id.svg" },
-    { title: "Thumbnail", img: "https://www.svgrepo.com/show/8135/user.svg" },
-    { title: "Model", img: "https://www.svgrepo.com/show/61111/email.svg" },
-    {
-      title: "Stock?",
-      img: "https://www.svgrepo.com/show/335284/status-lagging.svg",
-    },
-    {
-      title: "Price",
-      img: "https://www.svgrepo.com/show/10898/money.svg",
-    },
-  ];
 
   return (
     <>
